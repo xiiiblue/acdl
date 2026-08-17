@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { chapters } from "@/lib/content";
 
 export default function Home() {
@@ -6,18 +5,18 @@ export default function Home() {
     <main>
       <section className="hero">
         <nav className="topbar" aria-label="主导航">
-          <Link className="brand" href="/">
+          <a className="brand" href="/">
             <span className="brand-mark">ACDL</span>
             <span>蜂巢研发体系</span>
-          </Link>
-          <Link className="nav-link" href="/chapters/01">开始阅读</Link>
+          </a>
+          <a className="nav-link" href="/chapters/01">开始阅读</a>
         </nav>
         <div className="hero-inner">
           <p className="eyebrow">Agent Collaborative Development Lifecycle</p>
           <h1>蜂巢Agent协同研发体系</h1>
           <p className="hero-copy">一套为大型Agent研发项目形成的工程方法，让需求、设计、并行开发、验证和版本形成保持一致。</p>
           <div className="hero-actions">
-            <Link className="button primary" href="/chapters/01">从第一章开始</Link>
+            <a className="button primary" href="/chapters/01">从第一章开始</a>
             <a className="button secondary" href="#chapters">浏览全部章节</a>
           </div>
           <div className="scale-note">
@@ -41,9 +40,9 @@ export default function Home() {
         </div>
         <div className="chapter-grid">
           {chapters.map((chapter) => (
-            <Link className="chapter-card" href={`/chapters/${chapter.id}`} key={chapter.id}>
+            <a className="chapter-card" href={`/chapters/${chapter.id}`} key={chapter.id}>
               <span>{chapter.label}</span><h3>{chapter.title}</h3><p>{chapter.summary}</p><b aria-hidden="true">→</b>
-            </Link>
+            </a>
           ))}
         </div>
       </section>

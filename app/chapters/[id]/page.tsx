@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -32,13 +31,13 @@ export default async function ChapterPage({ params }: PageProps) {
   return (
     <div className="reader-shell">
       <header className="reader-header">
-        <Link className="brand" href="/"><span className="brand-mark">ACDL</span><span>蜂巢研发体系</span></Link>
+        <a className="brand" href="/"><span className="brand-mark">ACDL</span><span>蜂巢研发体系</span></a>
         <span className="accepted">Accepted</span>
       </header>
       <aside className="reader-sidebar">
         <SiteSearch entries={getSearchIndex()} />
         <nav aria-label="章节导航">
-          {chapters.map((item) => <Link className={item.id === chapter.id ? "active" : ""} href={`/chapters/${item.id}`} key={item.id}><span>{item.label}</span>{item.title}</Link>)}
+          {chapters.map((item) => <a className={item.id === chapter.id ? "active" : ""} href={`/chapters/${item.id}`} key={item.id}><span>{item.label}</span>{item.title}</a>)}
         </nav>
       </aside>
       <main className="reader-main">
@@ -49,12 +48,12 @@ export default async function ChapterPage({ params }: PageProps) {
             h1: () => null,
             h2: ({ children }) => <h2 id={headingId(children)}>{children}</h2>,
             h3: ({ children }) => <h3 id={headingId(children)}>{children}</h3>,
-            a: ({ href, children }) => href?.startsWith("/chapters/") ? <Link href={href}>{children}</Link> : <span>{children}</span>,
+            a: ({ href, children }) => href?.startsWith("/chapters/") ? <a href={href}>{children}</a> : <span>{children}</span>,
           }}>{markdown}</ReactMarkdown>
         </article>
         <nav className="page-nav" aria-label="前后章节">
-          {previous ? <Link href={`/chapters/${previous.id}`}><span>上一篇</span><strong>{previous.title}</strong></Link> : <span />}
-          {next ? <Link href={`/chapters/${next.id}`} className="next"><span>下一篇</span><strong>{next.title}</strong></Link> : <Link href="/" className="next"><span>阅读完成</span><strong>返回首页</strong></Link>}
+          {previous ? <a href={`/chapters/${previous.id}`}><span>上一篇</span><strong>{previous.title}</strong></a> : <span />}
+          {next ? <a href={`/chapters/${next.id}`} className="next"><span>下一篇</span><strong>{next.title}</strong></a> : <a href="/" className="next"><span>阅读完成</span><strong>返回首页</strong></a>}
         </nav>
       </main>
       <aside className="reader-toc">

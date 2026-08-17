@@ -15,6 +15,7 @@ test("renders the public ACDL landing page", async () => {
   assert.match(html, /蜂巢Agent协同研发体系/);
   assert.match(html, /10万行之后/);
   assert.doesNotMatch(html, /codex-preview/);
+  assert.match(html, /<a(?=[^>]*class="chapter-card")(?=[^>]*href="\/chapters\/01")[^>]*>/);
 });
 
 test("renders a complete handbook chapter", async () => {
