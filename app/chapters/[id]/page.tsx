@@ -12,7 +12,12 @@ export function generateStaticParams() { return chapters.map(({ id }) => ({ id }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const chapter = findChapter((await params).id);
-  return chapter ? { title: chapter.title, description: chapter.summary } : {};
+  return chapter ? {
+    title: chapter.title,
+    description: chapter.summary,
+    openGraph: { title: `${chapter.title}｜蜂巢ACDL`, description: chapter.summary, images: [] },
+    twitter: { title: `${chapter.title}｜蜂巢ACDL`, description: chapter.summary, images: [] },
+  } : {};
 }
 
 function headingId(children: unknown) {

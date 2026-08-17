@@ -16,6 +16,7 @@ test("renders the public ACDL landing page", async () => {
   assert.match(html, /10万行之后/);
   assert.doesNotMatch(html, /codex-preview/);
   assert.match(html, /<a(?=[^>]*class="chapter-card")(?=[^>]*href="\/chapters\/01")[^>]*>/);
+  assert.match(html, /property="og:image" content="https:\/\/hive-acdl\.evanstessa22\.chatgpt\.site\/og\.png"/);
 });
 
 test("renders a complete handbook chapter", async () => {
@@ -24,4 +25,16 @@ test("renders a complete handbook chapter", async () => {
   assert.equal(response.status, 200);
   assert.match(html, /什么是ACDL/);
   assert.match(html, /Agent从AGENTS\.md开始阅读规则/);
+  assert.match(html, /property="og:title" content="认识ACDL｜蜂巢ACDL"/);
+  assert.match(html, /name="twitter:title" content="认识ACDL｜蜂巢ACDL"/);
+  assert.doesNotMatch(html, /property="og:image"/);
+});
+
+test("renders appendix metadata without the site-wide image", async () => {
+  const response = await render("/chapters/15");
+  const html = await response.text();
+  assert.equal(response.status, 200);
+  assert.match(html, /property="og:title" content="设计要求与验证追踪｜蜂巢ACDL"/);
+  assert.match(html, /name="twitter:description" content="让稳定要求与验证证据保持一致"/);
+  assert.doesNotMatch(html, /property="og:image"/);
 });

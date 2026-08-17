@@ -2,13 +2,20 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hive-acdl.evanstessa22.chatgpt.site"),
   title: { default: "蜂巢Agent协同研发体系", template: "%s｜蜂巢ACDL" },
   description: "蜂巢项目形成的Agent Collaborative Development Lifecycle公开教程。",
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "蜂巢Agent协同研发体系",
     description: "从需求、设计、并行开发到验证和正式版本，系统理解ACDL。",
-    images: ["/acdl-social-card.png"],
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "蜂巢Agent协同研发体系",
+    description: "从需求、设计、并行开发到验证和正式版本，系统理解ACDL。",
+    images: ["/og.png"],
   },
 };
 
