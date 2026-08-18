@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return chapter ? {
     title: chapter.title,
     description: chapter.summary,
-    openGraph: { title: `${chapter.title}｜蜂巢ACDL`, description: chapter.summary, images: [] },
-    twitter: { title: `${chapter.title}｜蜂巢ACDL`, description: chapter.summary, images: [] },
+    openGraph: { title: `${chapter.title}｜ACDL`, description: chapter.summary, images: [] },
+    twitter: { title: `${chapter.title}｜ACDL`, description: chapter.summary, images: [] },
   } : {};
 }
 
@@ -36,8 +36,8 @@ export default async function ChapterPage({ params }: PageProps) {
   return (
     <div className="reader-shell">
       <header className="reader-header">
-        <a className="brand" href="/"><span className="brand-mark">ACDL</span><span>蜂巢研发体系</span></a>
-        <span className="accepted">Accepted</span>
+        <a className="brand" href="/"><span className="brand-mark">ACDL</span><span># Agent协同研发体系</span></a>
+        <span className="version-badge">V1.0.0</span>
       </header>
       <aside className="reader-sidebar">
         <SiteSearch entries={getSearchIndex()} />
