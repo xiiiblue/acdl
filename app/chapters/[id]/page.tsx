@@ -36,7 +36,7 @@ export default async function ChapterPage({ params }: PageProps) {
   return (
     <div className="reader-shell">
       <header className="reader-header">
-        <a className="brand" href="/"><span className="brand-mark">ACDL</span><span># Agent协同研发体系</span></a>
+        <a className="brand" href="/"><span className="brand-mark">ACDL</span><span>Agent协同研发体系</span></a>
         <span className="version-badge">V1.0.0</span>
       </header>
       <aside className="reader-sidebar">

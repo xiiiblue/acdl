@@ -7,7 +7,7 @@ export default function Home() {
         <nav className="topbar" aria-label="主导航">
           <a className="brand" href="/">
             <span className="brand-mark">ACDL</span>
-            <span># Agent协同研发体系</span>
+            <span>Agent协同研发体系</span>
           </a>
           <a className="nav-link" href="/chapters/01">开始阅读</a>
         </nav>

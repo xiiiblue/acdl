@@ -13,7 +13,8 @@ test("renders the public ACDL landing page", async () => {
   const html = await response.text();
   assert.equal(response.status, 200);
   assert.match(html, /<h1>Agent协同研发体系<\/h1>/);
-  assert.match(html, /# Agent协同研发体系/);
+  assert.match(html, /<span>Agent协同研发体系<\/span>/);
+  assert.doesNotMatch(html, /# Agent协同研发体系/);
   assert.match(html, /从认识体系，到形成正式版本/);
   assert.match(html, /10万行之后/);
   assert.doesNotMatch(html, /codex-preview/);
@@ -27,7 +28,8 @@ test("renders a complete handbook chapter", async () => {
   assert.equal(response.status, 200);
   assert.match(html, /什么是ACDL/);
   assert.match(html, /Agent从AGENTS\.md开始阅读规则/);
-  assert.match(html, /# Agent协同研发体系/);
+  assert.match(html, /<span>Agent协同研发体系<\/span>/);
+  assert.doesNotMatch(html, /# Agent协同研发体系/);
   assert.match(html, /class="version-badge">V1\.0\.0<\/span>/);
   assert.match(html, /property="og:title" content="认识ACDL｜ACDL"/);
   assert.match(html, /name="twitter:title" content="认识ACDL｜ACDL"/);
