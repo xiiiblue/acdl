@@ -40,8 +40,10 @@ export default async function ChapterPage({ params }: PageProps) {
     <div className="reader-shell">
       <ReadingProgress />
       <header className="reader-header">
-        <Link className="brand" href="/"><span className="brand-mark">ACDL</span><span>Agent协同研发体系</span></Link>
-        <div className="reader-actions"><a href="https://www.bluexiii.com/">博客</a><span className="version-badge">V1.0.0</span><ThemeToggle /></div>
+        <div className="reader-header-inner">
+          <Link className="brand" href="/"><span className="brand-mark">ACDL</span><span>Agent协同研发体系</span></Link>
+          <div className="reader-actions"><a href="https://www.bluexiii.com/">博客</a><span className="version-badge">V1.0.0</span><ThemeToggle /></div>
+        </div>
       </header>
       <aside className="reader-sidebar">
         <SiteSearch entries={getSearchIndex()} />
