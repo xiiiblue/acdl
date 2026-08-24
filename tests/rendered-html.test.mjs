@@ -29,8 +29,8 @@ test("renders the public ACDL landing page", async () => {
 
 test("renders a complete handbook chapter", async () => {
   const html = await readRoute("chapters/01/index.html");
-  assert.match(html, /什么是ACDL/);
-  assert.match(html, /Agent从AGENTS\.md开始阅读规则/);
+  assert.match(html, /ACDL是什么/);
+  assert.match(html, /Agent进入仓库后从哪里开始/);
   assert.match(html, /<span>Agent协同研发体系<\/span>/);
   assert.doesNotMatch(html, /# Agent协同研发体系/);
   assert.match(html, /class="version-badge">V1\.0\.0<\/span>/);
