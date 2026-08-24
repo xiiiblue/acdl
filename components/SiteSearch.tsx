@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 
 type Entry = { id: string; label: string; title: string; summary: string; headings: string[] };
 
@@ -19,9 +20,9 @@ export function SiteSearch({ entries }: { entries: Entry[] }) {
       {query && (
         <div className="search-results">
           {results.length ? results.map((entry) => (
-            <a href={`/chapters/${entry.id}`} key={entry.id} onClick={() => setQuery("")}>
+            <Link href={`/chapters/${entry.id}`} key={entry.id} onClick={() => setQuery("")}>
               <span>{entry.label}</span><strong>{entry.title}</strong><small>{entry.summary}</small>
-            </a>
+            </Link>
           )) : <p>没有找到相关章节</p>}
         </div>
       )}
