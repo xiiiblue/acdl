@@ -72,9 +72,9 @@ html[data-theme="dark"] .theme-icon-dark { display:block; }
 .lifecycle-track::before { content:""; position:absolute; top:20px; right:0; left:0; height:1px; background:var(--line); transform:scaleX(0); transform-origin:left; animation:draw-line 1.15s cubic-bezier(.2,.8,.2,1) .34s forwards; }
 .lifecycle-stage { position:relative; min-width:0; color:inherit; border-radius:10px; opacity:0; animation:stage-in .55s cubic-bezier(.2,.8,.2,1) forwards; }
 .stage-heading { position:relative; z-index:1; display:flex; align-items:center; gap:14px; }
-.stage-heading span { width:42px; height:42px; display:grid; place-items:center; color:var(--accent); background:var(--bg); border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line)); border-radius:50%; font-size:13px; font-weight:760; transition:color .22s ease,background-color .22s ease,transform .22s ease; }
+.stage-heading::before { content:""; position:absolute; top:0; bottom:0; left:42px; z-index:0; width:14px; background:var(--bg); }
+.stage-heading span { position:relative; z-index:1; width:42px; height:42px; display:grid; place-items:center; color:var(--accent); background:var(--bg); border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line)); border-radius:50%; font-size:13px; font-weight:760; transition:color .22s ease,background-color .22s ease,transform .22s ease; }
 .stage-heading strong { position:relative; z-index:1; padding-right:12px; color:var(--navy); background:var(--bg); font-size:16px; font-weight:760; transition:color .22s ease; }
-.stage-heading strong::before { content:""; position:absolute; top:0; right:100%; bottom:0; width:14px; background:var(--bg); }
 .lifecycle-stage p { margin:14px 0 5px 57px; color:var(--muted); font-size:13px; line-height:1.55; }
 .lifecycle-stage small { margin-left:57px; color:var(--accent); font:680 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; }
 .lifecycle-stage:hover .stage-heading span,.lifecycle-stage:focus-visible .stage-heading span { color:#fff; background:var(--accent); transform:scale(1.08); }
