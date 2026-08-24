@@ -14,6 +14,9 @@ test("renders the public ACDL landing page", async () => {
   assert.doesNotMatch(html, /# Agent协同研发体系/);
   assert.match(html, /从认识体系，到形成正式版本/);
   assert.match(html, /研发全生命周期/);
+  for (const [stage, chapter] of [["认知", "01"], ["设计", "05"], ["实施", "08"], ["验证", "10"]]) {
+    assert.match(html, new RegExp(`<a(?=[^>]*class="lifecycle-stage")(?=[^>]*href="/acdl/chapters/${chapter}/")(?=[^>]*aria-label="进入${stage}阶段)[^>]*>`));
+  }
   assert.doesNotMatch(html, /codex-preview/);
   assert.match(html, /<a(?=[^>]*class="chapter-row")(?=[^>]*href="\/acdl\/chapters\/01\/")[^>]*>/);
   assert.match(html, /property="og:image" content="https:\/\/www\.bluexiii\.com\/acdl\/og\.png"/);

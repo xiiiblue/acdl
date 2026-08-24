@@ -5,10 +5,10 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { chapters } from "@/lib/content";
 
 const stages = [
-  { number: "01", title: "认知", detail: "理解ACDL与研发全生命周期", range: "01—04" },
-  { number: "02", title: "设计", detail: "定义需求、架构与任务边界", range: "05—07" },
-  { number: "03", title: "实施", detail: "并行开发与协同交付", range: "08—09" },
-  { number: "04", title: "验证", detail: "验证质量并形成正式版本", range: "10—15" },
+  { number: "01", title: "认知", detail: "理解ACDL与研发全生命周期", range: "01—04", href: "/chapters/01" },
+  { number: "02", title: "设计", detail: "定义需求、架构与任务边界", range: "05—07", href: "/chapters/05" },
+  { number: "03", title: "实施", detail: "并行开发与协同交付", range: "08—09", href: "/chapters/08" },
+  { number: "04", title: "验证", detail: "验证质量并形成正式版本", range: "10—15", href: "/chapters/10" },
 ];
 
 export default function Home() {
@@ -44,11 +44,11 @@ export default function Home() {
         <h2 className="sr-only" id="lifecycle-title">研发全生命周期</h2>
         <div className="lifecycle-track">
           {stages.map((stage, index) => (
-            <div className="lifecycle-stage" key={stage.number} style={{ animationDelay: `${420 + index * 110}ms` }}>
+            <Link className="lifecycle-stage" href={stage.href} key={stage.number} style={{ animationDelay: `${420 + index * 110}ms` }} aria-label={`进入${stage.title}阶段，从第${stage.range.slice(0, 2)}章开始阅读`}>
               <div className="stage-heading"><span>{stage.number}</span><strong>{stage.title}</strong></div>
               <p>{stage.detail}</p>
               <small>{stage.range}章</small>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
