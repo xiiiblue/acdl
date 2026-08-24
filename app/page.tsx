@@ -61,7 +61,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer"><span>ACDL V1.0.0</span><a href="https://www.bluexiii.com/">BlueXIII</a></footer>
+      <footer className="site-footer"><span>ACDL V1.1.0</span><a href="https://www.bluexiii.com/">BlueXIII</a></footer>
     </main>
   );
 }
