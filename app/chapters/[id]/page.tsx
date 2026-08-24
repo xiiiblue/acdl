@@ -3,9 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { HeaderActions } from "@/components/HeaderActions";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { SiteSearch } from "@/components/SiteSearch";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { chapters, findChapter } from "@/lib/content";
 import { getSearchIndex, readChapter } from "@/lib/server-content";
 
@@ -42,7 +42,7 @@ export default async function ChapterPage({ params }: PageProps) {
       <header className="reader-header">
         <div className="reader-header-inner">
           <Link className="brand" href="/"><span className="brand-mark">ACDL</span><span>Agent协同研发体系</span></Link>
-          <div className="reader-actions"><a href="https://www.bluexiii.com/">博客</a><span className="version-badge">V1.0.0</span><ThemeToggle /></div>
+          <HeaderActions directoryHref="/#chapters" />
         </div>
       </header>
       <aside className="reader-sidebar">

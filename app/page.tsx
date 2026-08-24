@@ -1,7 +1,7 @@
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { HeaderActions } from "@/components/HeaderActions";
 import { MotionReveal } from "@/components/MotionReveal";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { chapters } from "@/lib/content";
 
 const stages = [
@@ -20,11 +20,7 @@ export default function Home() {
             <span className="brand-mark">ACDL</span>
             <span>Agent协同研发体系</span>
           </Link>
-          <nav className="header-nav" aria-label="主导航">
-            <a href="#chapters">手册</a>
-            <a href="https://www.bluexiii.com/">博客</a>
-            <ThemeToggle />
-          </nav>
+          <HeaderActions directoryHref="#chapters" />
         </div>
       </header>
 
