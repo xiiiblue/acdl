@@ -19,9 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 检出代码
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: 配置Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
@@ -30,7 +30,7 @@ jobs:
       - name: 构建并验证
         run: npm test
       - name: 上传静态站点
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: out
 
@@ -43,4 +43,4 @@ jobs:
     steps:
       - name: 部署站点
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
