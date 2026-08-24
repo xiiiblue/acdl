@@ -1,52 +1,75 @@
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { MotionReveal } from "@/components/MotionReveal";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { chapters } from "@/lib/content";
+
+const stages = [
+  { number: "01", title: "认知", detail: "理解ACDL与研发全生命周期", range: "01—04" },
+  { number: "02", title: "设计", detail: "定义需求、架构与任务边界", range: "05—07" },
+  { number: "03", title: "实施", detail: "并行开发与协同交付", range: "08—09" },
+  { number: "04", title: "验证", detail: "验证质量并形成正式版本", range: "10—15" },
+];
 
 export default function Home() {
   return (
-    <main>
-      <section className="hero">
-        <nav className="topbar" aria-label="主导航">
+    <main className="home-page">
+      <header className="site-header">
+        <div className="site-header-inner">
           <Link className="brand" href="/">
             <span className="brand-mark">ACDL</span>
             <span>Agent协同研发体系</span>
           </Link>
-          <Link className="nav-link" href="/chapters/01">开始阅读</Link>
-        </nav>
-        <div className="hero-inner">
-          <p className="eyebrow">Agent Collaborative Development Lifecycle</p>
-          <h1>Agent协同研发体系</h1>
-          <p className="hero-copy">一套为大型Agent研发项目形成的工程方法，让需求、设计、并行开发、验证和版本形成保持一致。</p>
-          <div className="hero-actions">
-            <Link className="button primary" href="/chapters/01">从第一章开始</Link>
-            <a className="button secondary" href="#chapters">浏览全部章节</a>
-          </div>
-          <div className="scale-note">
-            <strong>10万行之后，速度不再是唯一难题。</strong>
-            <span>上下文分散、目标漂移、并行冲突和版本失真会一起出现。</span>
+          <nav className="header-nav" aria-label="主导航">
+            <a href="#chapters">手册</a>
+            <a href="https://www.bluexiii.com/">博客</a>
+            <ThemeToggle />
+          </nav>
+        </div>
+      </header>
+
+      <section className="home-hero">
+        <div className="home-hero-copy">
+          <p className="eyebrow hero-enter enter-1">Agent Collaborative Development Lifecycle</p>
+          <h1 className="hero-enter enter-2">Agent协同研发体系</h1>
+          <p className="hero-copy hero-enter enter-3">让需求、设计、并行开发、验证和版本形成保持一致。</p>
+          <div className="hero-actions hero-enter enter-4">
+            <Link className="primary-action" href="/chapters/01">从第一章开始<ArrowRight size={18} weight="bold" /></Link>
+            <a className="text-action" href="#chapters">浏览全部章节</a>
           </div>
         </div>
       </section>
 
-      <section className="intro-grid" aria-label="ACDL核心特点">
-        <article><span>01</span><h2>文档是代码的源码</h2><p>需求和设计先定义系统，再由代码、测试与运行证据证明实现结果。</p></article>
-        <article><span>02</span><h2>人和Agent共同设计</h2><p>方向与取舍由人负责，调查、推演、实施和复核由双方协同完成。</p></article>
-        <article><span>03</span><h2>按任务安全并行</h2><p>每项任务在独立worktree中推进，并带着自己的目标、边界和验证结果返回主线。</p></article>
-      </section>
-
-      <section className="chapters-section" id="chapters">
-        <div className="section-heading">
-          <p className="eyebrow">READING GUIDE</p>
-          <h2>从认识体系，到形成正式版本</h2>
-          <p>前12章构成主线，3份附录用于实际工作时查阅。</p>
-        </div>
-        <div className="chapter-grid">
-          {chapters.map((chapter) => (
-            <Link className="chapter-card" href={`/chapters/${chapter.id}`} key={chapter.id}>
-              <span>{chapter.label}</span><h3>{chapter.title}</h3><p>{chapter.summary}</p><b aria-hidden="true">→</b>
-            </Link>
+      <section className="lifecycle-section" aria-labelledby="lifecycle-title">
+        <h2 className="sr-only" id="lifecycle-title">研发全生命周期</h2>
+        <div className="lifecycle-track">
+          {stages.map((stage, index) => (
+            <div className="lifecycle-stage" key={stage.number} style={{ animationDelay: `${420 + index * 110}ms` }}>
+              <div className="stage-heading"><span>{stage.number}</span><strong>{stage.title}</strong></div>
+              <p>{stage.detail}</p>
+              <small>{stage.range}章</small>
+            </div>
           ))}
         </div>
       </section>
+
+      <section className="chapters-section" id="chapters">
+        <h2 className="sr-only">从认识体系，到形成正式版本</h2>
+        <div className="chapter-list">
+          {chapters.map((chapter) => (
+            <MotionReveal key={chapter.id} delay={(Number(chapter.id) % 4) * 45}>
+              <Link className="chapter-row" href={`/chapters/${chapter.id}`}>
+                <span className="chapter-number">{chapter.id}</span>
+                <div><span>{chapter.label}</span><h3>{chapter.title}</h3></div>
+                <p>{chapter.summary}</p>
+                <ArrowRight className="chapter-arrow" size={20} weight="bold" aria-hidden="true" />
+              </Link>
+            </MotionReveal>
+          ))}
+        </div>
+      </section>
+
+      <footer className="site-footer"><span>ACDL V1.0.0</span><a href="https://www.bluexiii.com/">BlueXIII</a></footer>
     </main>
   );
 }

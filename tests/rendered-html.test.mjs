@@ -9,13 +9,13 @@ async function readRoute(path = "index.html") {
 
 test("renders the public ACDL landing page", async () => {
   const html = await readRoute();
-  assert.match(html, /<h1>Agent协同研发体系<\/h1>/);
+  assert.match(html, /<h1[^>]*>Agent协同研发体系<\/h1>/);
   assert.match(html, /<span>Agent协同研发体系<\/span>/);
   assert.doesNotMatch(html, /# Agent协同研发体系/);
   assert.match(html, /从认识体系，到形成正式版本/);
-  assert.match(html, /10万行之后/);
+  assert.match(html, /研发全生命周期/);
   assert.doesNotMatch(html, /codex-preview/);
-  assert.match(html, /<a(?=[^>]*class="chapter-card")(?=[^>]*href="\/acdl\/chapters\/01\/")[^>]*>/);
+  assert.match(html, /<a(?=[^>]*class="chapter-row")(?=[^>]*href="\/acdl\/chapters\/01\/")[^>]*>/);
   assert.match(html, /property="og:image" content="https:\/\/www\.bluexiii\.com\/acdl\/og\.png"/);
   assert.doesNotMatch(html, /hive-acdl\.evanstessa22\.chatgpt\.site/);
 });
