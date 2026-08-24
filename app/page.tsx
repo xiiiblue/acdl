@@ -33,10 +33,6 @@ export default function Home() {
           <p className="eyebrow hero-enter enter-1">Agent Collaborative Development Lifecycle</p>
           <h1 className="hero-enter enter-2">Agent协同研发体系</h1>
           <p className="hero-copy hero-enter enter-3">让需求、设计、并行开发、验证和版本形成保持一致。</p>
-          <div className="hero-actions hero-enter enter-4">
-            <Link className="primary-action" href="/chapters/01">从第一章开始<ArrowRight size={18} weight="bold" /></Link>
-            <a className="text-action" href="#chapters">浏览全部章节</a>
-          </div>
         </div>
       </section>
 
