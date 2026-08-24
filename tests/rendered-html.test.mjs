@@ -15,7 +15,8 @@ test("renders the public ACDL landing page", async () => {
   assert.match(html, /从认识体系，到形成正式版本/);
   assert.match(html, /研发全生命周期/);
   for (const [stage, chapter] of [["认知", "01"], ["设计", "05"], ["实施", "08"], ["验证", "10"]]) {
-    assert.match(html, new RegExp(`<a(?=[^>]*class="lifecycle-stage")(?=[^>]*href="/acdl/chapters/${chapter}/")(?=[^>]*aria-label="进入${stage}阶段)[^>]*>`));
+    assert.match(html, new RegExp(`<a(?=[^>]*class="lifecycle-stage")(?=[^>]*href="#chapter-${chapter}")(?=[^>]*aria-label="定位到目录中的第${chapter}章，${stage}阶段)[^>]*>`));
+    assert.match(html, new RegExp(`<a(?=[^>]*class="chapter-row")(?=[^>]*id="chapter-${chapter}")[^>]*>`));
   }
   assert.doesNotMatch(html, /codex-preview/);
   assert.match(html, /<a(?=[^>]*class="chapter-row")(?=[^>]*href="\/acdl\/chapters\/01\/")[^>]*>/);
