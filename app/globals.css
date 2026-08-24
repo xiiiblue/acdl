@@ -194,7 +194,7 @@ html[data-theme="dark"] .theme-icon-dark { display:block; }
   .chapter-row h3 { font-size:17px; }
   .reader-shell { display:block; }
   .reader-header { position:sticky; }
-  .header-actions .blog-link,.version-badge { display:none; }
+  .version-badge { display:none; }
   .reader-sidebar { position:static; width:100%; height:auto; padding:18px; border-right:0; border-bottom:1px solid var(--line); }
   .reader-sidebar nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); max-height:210px; overflow:auto; }
   .search-results { width:100%; }

@@ -16,6 +16,7 @@ test("renders the public ACDL landing page", async () => {
   assert.match(html, /研发全生命周期/);
   assert.match(html, /<a(?=[^>]*class="directory-link")(?=[^>]*href="#chapters")[^>]*>目录<\/a>/);
   assert.match(html, /class="version-badge">V1\.0\.0<\/span>/);
+  assert.doesNotMatch(html, /class="blog-link"/);
   for (const [stage, chapter] of [["认知", "01"], ["设计", "05"], ["实施", "08"], ["验证", "10"]]) {
     assert.match(html, new RegExp(`<a(?=[^>]*class="lifecycle-stage")(?=[^>]*href="#chapter-${chapter}")(?=[^>]*aria-label="定位到目录中的第${chapter}章，${stage}阶段)[^>]*>`));
     assert.match(html, new RegExp(`<a(?=[^>]*class="chapter-row")(?=[^>]*id="chapter-${chapter}")[^>]*>`));
@@ -34,6 +35,7 @@ test("renders a complete handbook chapter", async () => {
   assert.doesNotMatch(html, /# Agent协同研发体系/);
   assert.match(html, /class="version-badge">V1\.0\.0<\/span>/);
   assert.match(html, /<a(?=[^>]*class="directory-link")(?=[^>]*href="\/acdl\/#chapters")[^>]*>目录<\/a>/);
+  assert.doesNotMatch(html, /class="blog-link"/);
   assert.match(html, /property="og:title" content="认识ACDL｜ACDL"/);
   assert.match(html, /name="twitter:title" content="认识ACDL｜ACDL"/);
   assert.doesNotMatch(html, /property="og:image"/);
