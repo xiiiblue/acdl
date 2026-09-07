@@ -25,6 +25,11 @@ test("renders the public ACDL landing page", async () => {
   assert.match(html, /<a(?=[^>]*class="chapter-row")(?=[^>]*href="\/acdl\/chapters\/01\/")[^>]*>/);
   assert.match(html, /property="og:image" content="https:\/\/www\.bluexiii\.com\/acdl\/og\.png"/);
   assert.doesNotMatch(html, /hive-acdl\.evanstessa22\.chatgpt\.site/);
+  assert.match(html, /id="busuanzi_container_site_uv"/);
+  assert.match(html, /id="busuanzi_container_site_pv"/);
+  assert.match(html, /鲁ICP备18050487号-1/);
+  assert.match(html, /busuanzi\.ibruce\.info\/busuanzi\/2\.3\/busuanzi\.pure\.mini\.js/);
+  assert.match(html, /static\.cloudflareinsights\.com\/beacon\.min\.js/);
 });
 
 test("renders a complete handbook chapter", async () => {
@@ -39,6 +44,8 @@ test("renders a complete handbook chapter", async () => {
   assert.match(html, /property="og:title" content="认识ACDL｜ACDL"/);
   assert.match(html, /name="twitter:title" content="认识ACDL｜ACDL"/);
   assert.doesNotMatch(html, /property="og:image"/);
+  assert.match(html, /busuanzi\.ibruce\.info\/busuanzi\/2\.3\/busuanzi\.pure\.mini\.js/);
+  assert.match(html, /static\.cloudflareinsights\.com\/beacon\.min\.js/);
 });
 
 test("renders appendix metadata without the site-wide image", async () => {

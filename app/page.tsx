@@ -61,7 +61,16 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer"><span>ACDL V1.1.0</span><a href="https://www.bluexiii.com/">BlueXIII</a></footer>
+      <footer className="site-footer">
+        <span>ACDL V1.1.0</span>
+        <div className="footer-meta">
+          <span className="site-counter" aria-label="站点访问统计">
+            <span id="busuanzi_container_site_uv">访客 <strong id="busuanzi_value_site_uv" /></span>
+            <span id="busuanzi_container_site_pv">浏览 <strong id="busuanzi_value_site_pv" /></span>
+          </span>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备18050487号-1</a>
+        </div>
+      </footer>
     </main>
   );
 }
