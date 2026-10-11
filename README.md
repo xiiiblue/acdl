@@ -22,6 +22,8 @@ npm run dev
 
 站点只公开手册内容。手册中指向蜂巢私有仓库其它材料的链接会显示为普通文字，不会生成外部地址。
 
+当前站点版本为`V1.2.0`。手册于2026-10-11同步自`hive-os`的`docs/11-手册/02-研发流程手册/`，来源提交为`f0b040b0`；15个章节及手册总览保持与来源文件一致。
+
 ## 发布方式
 
 推送到`main`分支后，[GitHub Actions](https://github.com/xiiiblue/acdl/actions)会运行测试，将`out/`中的静态文件部署到GitHub Pages。站点以`/acdl/`为基础路径，不需要单独修改`www.bluexiii.com`的DNS配置。
