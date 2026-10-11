@@ -7,7 +7,7 @@ import { HeaderActions } from "@/components/HeaderActions";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { SiteSearch } from "@/components/SiteSearch";
 import { chapters, findChapter } from "@/lib/content";
-import { getSearchIndex, readChapter } from "@/lib/server-content";
+import { getMarkdownHeadings, getSearchIndex, readChapter } from "@/lib/server-content";
 
 type PageProps = { params: Promise<{ id: string }> };
 
@@ -34,7 +34,7 @@ export default async function ChapterPage({ params }: PageProps) {
   const current = chapters.findIndex((item) => item.id === chapter.id);
   const previous = chapters[current - 1];
   const next = chapters[current + 1];
-  const toc = [...markdown.matchAll(/^##\s+(.+)$/gm)].map((match) => ({ title: match[1].replace(/[`*_]/g, ""), id: headingId(match[1]) }));
+  const toc = getMarkdownHeadings(markdown).filter(({ level }) => level === 2).map(({ title }) => ({ title: title.replace(/[`*_]/g, ""), id: headingId(title) }));
 
   return (
     <div className="reader-shell">

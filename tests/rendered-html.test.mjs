@@ -55,6 +55,13 @@ test("renders appendix metadata without the site-wide image", async () => {
   assert.doesNotMatch(html, /property="og:image"/);
 });
 
+test("keeps headings inside code examples out of the chapter directory", async () => {
+  const html = await readRoute("chapters/08/index.html");
+  assert.match(html, /## 协作状态/);
+  assert.doesNotMatch(html, /href="#协作状态"/);
+  assert.match(html, /href="#同一任务需要多个Agent时-可以串行接棒"/);
+});
+
 test("exports every chapter and the GitHub Pages support files", async () => {
   const chapters = Array.from({ length: 15 }, (_, index) => String(index + 1).padStart(2, "0"));
   await Promise.all(chapters.map((id) => readRoute(`chapters/${id}/index.html`)));

@@ -21,10 +21,27 @@ export function normalizeMarkdown(source: string) {
   return markdown;
 }
 
+export function getMarkdownHeadings(markdown: string) {
+  let fence: { marker: string; length: number } | undefined;
+  return markdown.split("\n").flatMap((line) => {
+    const delimiter = line.match(/^ {0,3}(`{3,}|~{3,})(.*)$/);
+    if (fence) {
+      if (delimiter && delimiter[1][0] === fence.marker && delimiter[1].length >= fence.length && !delimiter[2].trim()) fence = undefined;
+      return [];
+    }
+    if (delimiter) {
+      fence = { marker: delimiter[1][0], length: delimiter[1].length };
+      return [];
+    }
+    const heading = line.match(/^ {0,3}(#{2,3})\s+(.+)$/);
+    return heading ? [{ level: heading[1].length, title: heading[2] }] : [];
+  });
+}
+
 export function getSearchIndex() {
   return chapters.map((chapter) => {
     const markdown = readChapter(chapter.file);
-    const headings = [...markdown.matchAll(/^#{2,3}\s+(.+)$/gm)].map((match) => match[1].replace(/[`*_]/g, ""));
+    const headings = getMarkdownHeadings(markdown).map(({ title }) => title.replace(/[`*_]/g, ""));
     return { id: chapter.id, label: chapter.label, title: chapter.title, summary: chapter.summary, headings };
   });
 }
