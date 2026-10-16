@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
+import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
@@ -66,4 +67,35 @@ test("exports every chapter and the GitHub Pages support files", async () => {
   const chapters = Array.from({ length: 15 }, (_, index) => String(index + 1).padStart(2, "0"));
   await Promise.all(chapters.map((id) => readRoute(`chapters/${id}/index.html`)));
   await Promise.all([readRoute("404.html"), readRoute(".nojekyll")]);
+});
+
+test("首页、404和15篇正文保持完整页面结构，统计标识不重复", async () => {
+  const routes = ["index.html", "404.html", ...Array.from({ length: 15 }, (_, index) => `chapters/${String(index + 1).padStart(2, "0")}/index.html`)];
+  for (const route of routes) {
+    const html = await readRoute(route);
+    for (const tag of ["header", "main", "footer"]) assert.equal((html.match(new RegExp(`<${tag}(?:\\s|>)`, "g")) ?? []).length, 1, `${route}的${tag}`);
+    for (const id of ["main-content", "busuanzi_container_site_uv", "busuanzi_container_site_pv"]) assert.equal((html.match(new RegExp(`id="${id}"`, "g")) ?? []).length, 1, `${route}的${id}`);
+    assert.match(html, /href="#main-content"/);
+  }
+});
+
+test("首页、404与全部章节的本地链接及目录锚点可以解析", async () => {
+  const output = fileURLToPath(new URL("../out/", import.meta.url));
+  const routes = ["index.html", "404.html", ...Array.from({ length: 15 }, (_, index) => `chapters/${String(index + 1).padStart(2, "0")}/index.html`)];
+  for (const route of routes) {
+    const html = await readRoute(route);
+    const base = new URL(route.replace(/index\.html$/, ""), "https://www.bluexiii.com/acdl/");
+    for (const [, href] of html.matchAll(/\shref="([^"]+)"/g)) {
+      const url = new URL(href.replaceAll("&amp;", "&"), base);
+      if (url.origin !== base.origin || !url.pathname.startsWith("/acdl/")) continue;
+      let target = decodeURIComponent(url.pathname.slice(6));
+      if (target.endsWith("/")) target += "index.html";
+      if (!path.extname(target)) target += "/index.html";
+      await access(path.join(output, target));
+      if (url.hash && target.endsWith(".html")) {
+        const targetHtml = await readFile(path.join(output, target), "utf8");
+        assert.ok(targetHtml.includes(`id="${decodeURIComponent(url.hash.slice(1))}"`), `${route} → ${href}`);
+      }
+    }
+  }
 });

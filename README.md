@@ -27,3 +27,11 @@ npm run dev
 ## 发布方式
 
 推送到`main`分支后，[GitHub Actions](https://github.com/xiiiblue/acdl/actions)会运行测试，将`out/`中的静态文件部署到GitHub Pages。站点以`/acdl/`为基础路径，不需要单独修改`www.bluexiii.com`的DNS配置。
+
+## 视觉与阅读体验
+
+2026-10-16参照蜂巢网站统一视觉：冷白背景、钴蓝强调、海军蓝概念图，使用系统字体，不加载外部字体。首页保留四阶段目录锚点，以分组目录展示12章正文和3篇附录；原有手册正文、章节地址和V1.2.0版本标识保持不变。
+
+首页、正文和404页共用`components/SiteHeader.tsx`及`components/SiteFooter.tsx`。阅读页在桌面提供章节导航、正文与本章目录，手机通过“章节目录”按钮展开导航。统一颜色、间距、代码、表格和打印样式在`app/globals.css`中维护，不依赖蜂巢网站的运行环境或源码。
+
+`npm run lint`检查代码规范；`npm test`构建静态站点并执行7组测试，覆盖页面结构、全部章节、本地链接、目录锚点、元数据和Pages支持文件。设计说明与浏览器复核见[设计QA报告](design-qa.md)。

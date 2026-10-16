@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bluexiii.com/acdl/"),
@@ -31,7 +32,9 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('acdl-theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch(e){}})()` }} />
       </head>
       <body>
+        <a className="skip-link" href="#main-content">跳到主要内容</a>
         {children}
+        <SiteFooter />
         <Script
           src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
           strategy="afterInteractive"
