@@ -8,10 +8,11 @@ export function SiteFooter() {
           <Link href="/" className="footer-brand">ACDL<span>Agent协同研发体系</span></Link>
           <p>让协作有依据，让结果可延续。</p>
         </div>
-        <nav className="footer-links" aria-label="手册快捷入口">
+        <nav className="footer-links" aria-label="页脚导航">
           <Link href="/#chapters">手册目录</Link>
           <Link href="/chapters/13">术语与对象</Link>
           <Link href="/chapters/14">状态与命令</Link>
+          <a href="https://github.com/xiiiblue/hive-acdl" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </nav>
         <p className="footer-note">源自蜂巢研发实践<br />公开手册 · V1.2.0</p>
       </div>
