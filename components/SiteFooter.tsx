@@ -14,7 +14,7 @@ export function SiteFooter() {
           <Link href="/chapters/14">状态与命令</Link>
           <a href="https://github.com/xiiiblue/hive-acdl" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </nav>
-        <p className="footer-note">源自蜂巢研发实践<br />公开手册 · V1.2.0<br /><a href="https://github.com/xiiiblue/hive-acdl/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">独立项目：Apache-2.0</a></p>
+        <p className="footer-note">源自蜂巢研发实践<br />公开手册 · V1.2.0<br /><a href="https://github.com/xiiiblue/hive-acdl/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">独立项目：Apache-2.0</a><br /><a href="https://github.com/xiiiblue/acdl/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">网站：Apache-2.0</a></p>
       </div>
       <div className="site-container footer-bottom">
         <span>Agent Collaborative Development Lifecycle</span>

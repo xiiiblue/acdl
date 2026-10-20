@@ -14,6 +14,8 @@ Agent已经能够参与需求分析、设计、编码、测试、评审和发布
 
 [ACDL官网](https://www.bluexiii.com/acdl/)提供连续介绍，独立[hive-acdl仓库](https://github.com/xiiiblue/hive-acdl)已于2026-10-20按[Apache-2.0](https://github.com/xiiiblue/hive-acdl/blob/main/LICENSE)开源，提供通用规范、模板和可运行的本地示例。HiveOS主仓库仍为私有；公开材料的使用不需要HiveOS访问权，也不授予来源业务或环境权限。
 
+官网源码[acdl仓库](https://github.com/xiiiblue/acdl)同样已采用[Apache-2.0](https://github.com/xiiiblue/acdl/blob/main/LICENSE)，网站实现与经授权分发的手册内容按其LICENSE和NOTICE使用，第三方组件与引用材料保留各自声明。
+
 实际工作先选需要的路径：
 
 ```text

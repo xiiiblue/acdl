@@ -1,0 +1,14 @@
+ACDL website (acdl)
+Copyright 2026 ACDL website contributors.
+
+This distribution includes website code and reviewed introductory material
+adapted from the HiveOS project, with authorization for this distribution.
+Source versions and adaptation notes are recorded in README.md and content/.
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+Third-party components and quoted material retain their original licenses
+and notices; this notice does not replace those third-party notices.
+Undistributed HiveOS materials and business access are outside this grant.
+
+Website: https://www.bluexiii.com/acdl/
+Source repository: https://github.com/xiiiblue/acdl
