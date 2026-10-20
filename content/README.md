@@ -12,6 +12,8 @@ Agent已经能够参与需求分析、设计、编码、测试、评审和发布
 
 蜂巢把人和Agent共同参与研发的这套方法称为**Agent Collaborative Development Lifecycle（ACDL）**，中文名称为“Agent协同研发体系”。它是蜂巢根据自己的项目规模、协作方式、代码仓库、运行环境和交付要求形成的研发方法，不是行业标准，也不要求其它项目原样照搬。
 
+[ACDL官网](https://www.bluexiii.com/acdl/)提供连续介绍，独立[hive-acdl仓库](https://github.com/xiiiblue/hive-acdl)已于2026-10-20按[Apache-2.0](https://github.com/xiiiblue/hive-acdl/blob/main/LICENSE)开源，提供通用规范、模板和可运行的本地示例。HiveOS主仓库仍为私有；公开材料的使用不需要HiveOS访问权，也不授予来源业务或环境权限。
+
 实际工作先选需要的路径：
 
 ```text
